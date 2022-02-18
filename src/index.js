@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const endPoint = 'http://localhost:3000/api/v1/notes';
+  const endPoint = 'http://localhost:3000/api/v1/recipes';
   fetch(endPoint)
   .then(res => res.json())
   .then(recipeJson => 
