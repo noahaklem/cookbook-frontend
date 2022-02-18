@@ -1,6 +1,7 @@
 class App {
-  constructor() {
-    
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    alert('LOADED');
+  })
 
+ 
 }
