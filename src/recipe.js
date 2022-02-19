@@ -1,6 +1,6 @@
 class Recipe {
   constructor(data, dataAttributes) {
-    this.id = data.id;
+    this.id = parseInt(data.id);
     this.name = dataAttributes.name;
     this.cook_time = dataAttributes.cook_time;
     Recipe.all.push(this);
@@ -15,6 +15,28 @@ class Recipe {
         <button class="made" data-id=${this.id}>Made Recipe</button>
       </div>
     `
+  }
+
+  renderRecipeForm() {
+    return `
+      <div id="recipe-update-card">
+        <h3>Update Recipe</h3>
+        <form data-id=${this.id}>
+        <div>
+          <input type="text" value="${this.name}" />
+        </div>
+        <div>
+          <input type="number" value="${this.cook_time}" />
+        </div>
+          
+        <button type="submit">Update Recipe</button>
+        </form>
+      </div>
+    `;
+  }
+
+  static findById(id) {
+    return this.all.find(recipe => recipe.id === id);
   }
 }
 
