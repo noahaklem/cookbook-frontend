@@ -6,7 +6,7 @@ class Recipe {
     Recipe.all.push(this);
   }
 
-  renderRecipe() {
+  renderListItem() {
     return ` 
       <div id="recipe-card">
         <h3 class="title">${this.name}</h3>
@@ -21,6 +21,7 @@ class Recipe {
     return `
       <div id="recipe-update-card">
         <h3>Update Recipe</h3>
+        <button type="button"> X </button>
         <form data-id=${this.id}>
         <div>
           <input type="text" value="${this.name}" />
@@ -33,6 +34,15 @@ class Recipe {
         </form>
       </div>
     `;
+  }
+
+  removeRecipeForm() {
+
+  }
+
+  update({name, cook_time}) {
+    this.name = name;
+    this.cook_time = cook_time;
   }
 
   static findById(id) {
