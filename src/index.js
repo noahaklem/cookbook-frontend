@@ -4,14 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const app = new App();
   app.attachEventListeners();
 
-  fetch(endPoint)
-  .then(res => res.json())
-  .then(recipes => 
+  app.adapter.fetchRecipes().then(recipes => 
     recipes.data.forEach(recipe => {
-      const newRecipe = new Recipe(recipe, recipe.attributes);
-      document.querySelector("#recipes-container").innerHTML += newRecipe.renderRecipe();
+      document.querySelector("#recipes-container").innerHTML += new Recipe(recipe, recipe.attributes).renderRecipe();
 
-      
     })
   );
 });

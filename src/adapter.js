@@ -1,10 +1,21 @@
 class Adapter {
   constructor() {
-    this.baseUrl = "http://localhost:3000/api/v1"
+    this.baseUrl = "http://localhost:3000/api/v1";
   }
 
   fetchRecipes() {
     return fetch(`${this.baseUrl}/recipes`).then(res => res.json());
+  }
+
+  updateRecipe(id, body) {
+    return fetch(`${this.baseUrl}/recipes/${id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(body),
+    }).then(res => res.json());
   }
 
   createRecipe(body) {
