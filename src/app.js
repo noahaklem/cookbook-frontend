@@ -5,6 +5,7 @@ class App {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormClose = this.handleFormClose.bind(this);
+
     this.createRecipes = this.createRecipes.bind(this);
     this.addRecipes = this.addRecipes.bind(this);
   }
@@ -15,6 +16,7 @@ class App {
     document.querySelector("#update-recipes-container").addEventListener("submit", this.handleFormSubmit);
 
     document.querySelector("#update-recipes-container").addEventListener("click", this.handleFormClose);
+
   };
 
   createRecipes(recipes) {
@@ -50,6 +52,13 @@ class App {
     const recipe = Recipe.findById(id);
     document.querySelector("#update-recipes-container").innerHTML += recipe.renderRecipeForm()
   }
+
+  handleFormClose(e) {
+    
+  }
+
+ 
+
 }
 
     

@@ -3,6 +3,7 @@ class Recipe {
     this.id = parseInt(data.id);
     this.name = dataAttributes.name;
     this.cook_time = dataAttributes.cook_time;
+
     Recipe.all.push(this);
   }
 
@@ -34,10 +35,6 @@ class Recipe {
         </form>
       </div>
     `;
-  }
-
-  removeRecipeForm() {
-
   }
 
   update({name, cook_time}) {
