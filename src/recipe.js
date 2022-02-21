@@ -18,23 +18,10 @@ class Recipe {
     `
   }
 
-  renderRecipeForm() {
-    return `
-      <div id="recipe-update-card">
-        <h3>Update Recipe</h3>
-        <button type="button"> X </button>
-        <form data-id=${this.id}>
-        <div>
-          <input type="text" value="${this.name}" />
-        </div>
-        <div>
-          <input type="number" value="${this.cook_time}" />
-        </div>
-          
-        <button type="submit">Update Recipe</button>
-        </form>
-      </div>
-    `;
+  renderRecipeForm(id, name, cook_time) {
+    const form = new Form(id, name, cook_time);
+    document.querySelector("#update-recipes-container").innerHTML += form.renderEdit();
+    form.addEventListeners();
   }
 
   update({name, cook_time}) {

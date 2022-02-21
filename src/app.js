@@ -4,7 +4,7 @@ class App {
 
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleFormClose = this.handleFormClose.bind(this);
+    // this.handleFormClose = this.handleFormClose.bind(this);
 
     this.createRecipes = this.createRecipes.bind(this);
     this.addRecipes = this.addRecipes.bind(this);
@@ -15,7 +15,7 @@ class App {
   
     document.querySelector("#update-recipes-container").addEventListener("submit", this.handleFormSubmit);
 
-    document.querySelector("#update-recipes-container").addEventListener("click", this.handleFormClose);
+    // document.querySelector("#update-recipes-container").addEventListener("click", this.handleFormClose);
 
   };
 
@@ -50,12 +50,12 @@ class App {
   handleEditClick(e) {
     const id = parseInt(e.target.dataset.id);
     const recipe = Recipe.findById(id);
-    document.querySelector("#update-recipes-container").innerHTML += recipe.renderRecipeForm()
+    recipe.renderRecipeForm(recipe.id, recipe.name, recipe.cook_time);
   }
 
-  handleFormClose(e) {
+  // handleFormClose(e) {
     
-  }
+  // }
 
  
 
