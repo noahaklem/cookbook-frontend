@@ -1,14 +1,9 @@
 class Form {
-  constructor(id, name, cook_time) {
+  constructor({id, name, cook_time}) {
     this.id = id;
     this.name = name;
     this.cook_time = cook_time;
 
-    this.handleFormClose = this.handleFormClose.bind(this);
-  }
-
-  addEventListeners() {
-    document.querySelector("#recipe-update-card [type=button]").addEventListener("click", this.handleFormClose);
   }
 
   renderForm() {
@@ -28,10 +23,5 @@ class Form {
         </form>
       </div>
     `;
-  }
-
-  handleFormClose(e) {
-   const form = e.target.parentElement;
-   form.remove();
   }
 }

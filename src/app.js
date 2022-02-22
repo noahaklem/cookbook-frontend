@@ -2,19 +2,19 @@ class App {
   constructor() {
     this.adapter = new Adapter();
 
-    this.handleEditClick = this.handleEditClick.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleEdit = this.handleEdit;
 
     this.createRecipes = this.createRecipes.bind(this);
     this.addRecipes = this.addRecipes.bind(this);
   }
 
   attachEventListeners() {
-    document.querySelector("#recipes-container"). addEventListener("click", this.handleEditClick)
-  
-    document.querySelector("#update-recipes-container").addEventListener("submit", this.handleFormSubmit);
+    document.querySelector("#edit-recipe").addEventListener("click", this.handleEdit)
+    console.log("edit")
 
-  };
+    document.querySelector("#delete-recipe").addEventListener("click", this.handleDelete);
+    console.log("delete")
+  }
 
   createRecipes(recipes) {
     recipes.data.forEach(recipe => {
@@ -24,29 +24,24 @@ class App {
   }
 
   addRecipes() {
-    Recipe.all.forEach(
-      recipe => (recipe.renderListItem())
-    );
-  }
-
-  handleFormSubmit(e) {
-    e.preventDefault();
-    const id = parseInt(e.target.dataset.id);
-    const recipe = Recipe.findById(id);
-    const name = e.target.querySelector("input").value;
-    const cook_time = parseInt(e.target.querySelector("input[type=number]").value);
-    const body = { name, cook_time };
-    this.adapter.updateRecipe(recipe.id, body).then(updatedRecipe => {
-      const recipe = Recipe.findById(parseInt(updatedRecipe.data.id));
-      recipe.update(updatedRecipe.data.attributes);
-      this.addRecipes();
+    Recipe.all.forEach(recipe => {
+      recipe.index()
+      this.attachEventListeners();
     });
+    
   }
 
-  handleEditClick(e) {
-    const id = parseInt(e.target.dataset.id);
+  handleEdit(e) {
+    const id = parseInt(e.target.dataset.id)
     const recipe = Recipe.findById(id);
-    recipe.recipeForm(recipe.id, recipe.name, recipe.cook_time);
+    const form = new Form(recipe);
+    document.querySelector("#update-recipes-container").innerHTML += form.renderForm();
+  }
+
+  handleDelete(e) {
+    const id = parseInt(e.target.dataset.id)
+    const recipe = Recipe.findById(id);
+    console.log("delete action")
   }
 }
 

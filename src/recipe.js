@@ -7,16 +7,9 @@ class Recipe {
     Recipe.all.push(this);
   }
 
-  renderListItem() {
+  index() {
     const card = new Card(this)
-    document.querySelector("#recipes-container").innerHTML += card.index();
-    // card.addEventListeners();
-  }
-
-  recipeForm(id, name, cook_time) {
-    const form = new Form(id, name, cook_time);
-    document.querySelector("#update-recipes-container").innerHTML += form.renderForm();
-    form.addEventListeners();
+    document.querySelector("#recipes-container").innerHTML += card.renderCard();
   }
 
   update({name, cook_time}) {
