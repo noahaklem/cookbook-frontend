@@ -17,6 +17,12 @@ class Recipe {
     this.cook_time = cook_time;
   }
 
+  recipeForm(recipe) {
+    const form = new Form(recipe);
+    document.querySelector("#recipe-card"). innerHTML += form.renderForm();
+  }
+
+
   static findById(id) {
     return this.all.find(recipe => recipe.id === id);
   }
