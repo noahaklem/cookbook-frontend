@@ -8,19 +8,14 @@ class Recipe {
   }
 
   renderListItem() {
-    return ` 
-      <div id="recipe-card">
-        <h3 class="title">${this.name}</h3>
-        <p class="sub-title">Cook Time: ${this.cook_time}</p>
-        <button class="button" data-id=${this.id}>Show Recipe</button>
-        <button class="made" data-id=${this.id}>Made Recipe</button>
-      </div>
-    `
+    const card = new Card(this)
+    document.querySelector("#recipes-container").innerHTML += card.index();
+    // card.addEventListeners();
   }
 
-  renderRecipeForm(id, name, cook_time) {
+  recipeForm(id, name, cook_time) {
     const form = new Form(id, name, cook_time);
-    document.querySelector("#update-recipes-container").innerHTML += form.renderEdit();
+    document.querySelector("#update-recipes-container").innerHTML += form.renderForm();
     form.addEventListeners();
   }
 

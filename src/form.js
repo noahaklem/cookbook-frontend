@@ -11,7 +11,7 @@ class Form {
     document.querySelector("#recipe-update-card [type=button]").addEventListener("click", this.handleFormClose);
   }
 
-  renderEdit() {
+  renderForm() {
     return `
       <div id="recipe-update-card">
         <h3>Update Recipe</h3>

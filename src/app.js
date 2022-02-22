@@ -4,7 +4,6 @@ class App {
 
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    // this.handleFormClose = this.handleFormClose.bind(this);
 
     this.createRecipes = this.createRecipes.bind(this);
     this.addRecipes = this.addRecipes.bind(this);
@@ -14,8 +13,6 @@ class App {
     document.querySelector("#recipes-container"). addEventListener("click", this.handleEditClick)
   
     document.querySelector("#update-recipes-container").addEventListener("submit", this.handleFormSubmit);
-
-    // document.querySelector("#update-recipes-container").addEventListener("click", this.handleFormClose);
 
   };
 
@@ -27,9 +24,8 @@ class App {
   }
 
   addRecipes() {
-    document.querySelector("#recipes-container").innerHTML = "";
     Recipe.all.forEach(
-      recipe => (document.querySelector("#recipes-container").innerHTML += recipe.renderListItem())
+      recipe => (recipe.renderListItem())
     );
   }
 
@@ -50,15 +46,8 @@ class App {
   handleEditClick(e) {
     const id = parseInt(e.target.dataset.id);
     const recipe = Recipe.findById(id);
-    recipe.renderRecipeForm(recipe.id, recipe.name, recipe.cook_time);
+    recipe.recipeForm(recipe.id, recipe.name, recipe.cook_time);
   }
-
-  // handleFormClose(e) {
-    
-  // }
-
- 
-
 }
 
     
