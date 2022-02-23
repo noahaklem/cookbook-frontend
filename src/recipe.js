@@ -1,8 +1,12 @@
 class Recipe {
-  constructor(data, dataAttributes) {
+  constructor(data, dataAttributes, ingredients) {
     this.id = parseInt(data.id);
     this.name = dataAttributes.name;
     this.cook_time = dataAttributes.cook_time;
+   
+    this.recipeIngredients = [];
+    
+    this.createIngredients = this.createIngredients(ingredients);
 
     Recipe.all.push(this);
   }
@@ -20,6 +24,21 @@ class Recipe {
   recipeForm(recipe) {
     const form = new Form(recipe);
     document.querySelector("#recipe-card"). innerHTML += form.renderForm();
+  }
+
+  createIngredients(ingredients) {
+    ingredients.forEach(ingredient => {
+      const recipeIngredient = new Ingredient(ingredient)
+      this.recipeIngredients.push(recipeIngredient);
+    })
+  }
+
+  addIngredients() {
+
+    //this works but is not rendering for each seperate card need to fix
+    this.recipeIngredients.forEach(ingredient => {
+      ingredient.index();
+    })
   }
 
 

@@ -19,6 +19,10 @@ class Adapter {
     return this.patch(`${this.baseUrl}/recipes/${id}`, body)
   }
 
+  deleteRecipe(id, body) {
+    return
+  }
+
   get(url) {
     return fetch(url).then(res => res.json());
   }
