@@ -25,13 +25,14 @@ class App {
   addRecipes() {
     document.querySelector("#recipes-container").innerHTML = "";
     Recipe.all.forEach(recipe => {
-      recipe.index();
+      recipe.renderIndex();
       recipe.addIngredients();
     });
   }
 
   delete(id) {
-    Recipe.findById(id)
+    // const recipe = Recipe.findById(id);
+    // debugger
 
   }
 

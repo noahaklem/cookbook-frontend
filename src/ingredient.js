@@ -1,17 +1,23 @@
 class Ingredient {
-  constructor({id, name, quantity, measurement}) {
+  constructor({id, name, recipe_id, quantity, measurement}) {
     this.id = id;
     this.name = name;
+    this.recipe_id = recipe_id;
     this.quantity = quantity;
     this.measurement = measurement;
 
-    Ingredient.all.push(this)
+    Ingredient.all.push(this);
   }
 
-  index() {
+  renderIndex() {
     const card = new ingredientCard(this);
-    debugger
-    document.querySelector("#ingredients-container").innerHTML += card.renderCard();
+    const container = this.findContainer(this.recipe_id);
+    container.innerHTML += card.renderIngredientCard();
+  }
+
+  findContainer(id) {
+    const selector = document.querySelectorAll("#ingredients-container");
+    return [...selector].find(container => parseInt(container.dataset.id) === id);
   }
 
 }

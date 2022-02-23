@@ -6,7 +6,7 @@ class Form {
 
   }
 
-  renderForm() {
+  renderRecipeForm() {
     return `
       <div id="recipe-update-card">
         <h3>Update Recipe</h3>

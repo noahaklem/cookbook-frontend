@@ -11,9 +11,9 @@ class Recipe {
     Recipe.all.push(this);
   }
 
-  index() {
-    const card = new Card(this)
-    document.querySelector("#recipes-container").innerHTML += card.renderCard();
+  renderIndex() {
+    const card = new recipeCard(this)
+    document.querySelector("#recipes-container").innerHTML += card.renderRecipeCard();
   }
 
   update({name, cook_time}) {
@@ -23,7 +23,8 @@ class Recipe {
 
   recipeForm(recipe) {
     const form = new Form(recipe);
-    document.querySelector("#recipe-card"). innerHTML += form.renderForm();
+    const card = this.findCard(this.id)
+    card.innerHTML += form.renderRecipeForm();
   }
 
   createIngredients(ingredients) {
@@ -34,11 +35,14 @@ class Recipe {
   }
 
   addIngredients() {
-
-    //this works but is not rendering for each seperate card need to fix
     this.recipeIngredients.forEach(ingredient => {
-      ingredient.index();
+      ingredient.renderIndex();
     })
+  }
+
+  findCard(id) {
+    const selector = document.querySelectorAll("#recipe-card");
+    return [...selector].find(card => parseInt(card.dataset.id) === id);
   }
 
 

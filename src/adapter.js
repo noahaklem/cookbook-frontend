@@ -20,7 +20,7 @@ class Adapter {
   }
 
   deleteRecipe(id, body) {
-    return
+    // return this.delete(`${this.baseUrl}/recipes/${id}`, body)
   }
 
   get(url) {
@@ -41,5 +41,13 @@ class Adapter {
       headers: this.headers,
       body: JSON.stringify(body),
     }).then(res => res.json());
+  }
+
+  delete(url, body) {
+    return fetch(url, {
+      method: "DELETE",
+      headers: this.headers,
+      body: JSON.stringify(body),
+    }).then(res => res.json())
   }
 }
