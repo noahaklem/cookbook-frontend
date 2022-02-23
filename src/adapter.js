@@ -20,7 +20,7 @@ class Adapter {
   }
 
   deleteRecipe(id, body) {
-    // return this.delete(`${this.baseUrl}/recipes/${id}`, body)
+    return this.delete(`${this.baseUrl}/recipes/${id}`, body)
   }
 
   get(url) {

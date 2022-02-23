@@ -31,8 +31,8 @@ class App {
   }
 
   delete(id) {
-    // const recipe = Recipe.findById(id);
-    // debugger
+    const recipe = Recipe.findById(id);
+    debugger
 
   }
 
