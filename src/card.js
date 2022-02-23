@@ -13,6 +13,9 @@ class Card {
         <p class="sub-title">Cook Time: ${this.cook_time}</p>
         <button data-action="edit" class="button" data-id=${this.id}>Edit Recipe</button>
         <button data-action="made" class="made" data-id=${this.id}>Made Recipe</button>
+        <div id="ingredients-container">
+        
+        </div>
       </div>
     `;
   }

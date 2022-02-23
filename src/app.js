@@ -17,7 +17,7 @@ class App {
 
   createRecipes(recipes) {
     recipes.data.forEach(recipe => {
-      new Recipe(recipe, recipe.attributes);
+      new Recipe(recipe, recipe.attributes, recipe.attributes.ingredients);
     });
     this.addRecipes();
   }
@@ -26,6 +26,7 @@ class App {
     document.querySelector("#recipes-container").innerHTML = "";
     Recipe.all.forEach(recipe => {
       recipe.index();
+      recipe.addIngredients();
     });
   }
 
