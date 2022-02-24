@@ -3,9 +3,9 @@ class Recipe {
     this.id = parseInt(data.id);
     this.name = dataAttributes.name;
     this.cook_time = dataAttributes.cook_time;
-   
+    this.made = dataAttributes.made;
+
     this.recipeIngredients = [];
-    
     this.createIngredients = this.createIngredients(ingredients);
 
     Recipe.all.push(this);
@@ -16,9 +16,10 @@ class Recipe {
     document.querySelector("#recipes-container").innerHTML += card.renderRecipeCard();
   }
 
-  update({name, cook_time}) {
+  update({name, cook_time, made}) {
     this.name = name;
     this.cook_time = cook_time;
+    this.made = made;
   }
 
   recipeForm(recipe) {

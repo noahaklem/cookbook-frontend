@@ -1,8 +1,9 @@
 class recipeCard {
-  constructor({id, name, cook_time}) {
+  constructor({id, name, cook_time, made}) {
     this.id = id;
     this.name = name;
     this.cook_time = cook_time;
+    !made ? this.made = "Not Tried" : this.made = "Tried";
   }
 
   renderRecipeCard() {
@@ -12,7 +13,7 @@ class recipeCard {
         <button data-action="delete" id="delete-recipe" data-id=${this.id}">X</button>
         <p class="sub-title">Cook Time: ${this.cook_time}</p>
         <button data-action="edit" class="button" data-id=${this.id}>Edit Recipe</button>
-        <button data-action="made" class="made" data-id=${this.id}>Made Recipe</button>
+        <button data-action="made" class="made" data-id=${this.id}>${this.made}</button>
         <h4>Ingredients:</h4>
         <div data-id=${this.id} id="ingredients-container">
         

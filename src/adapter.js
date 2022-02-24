@@ -11,16 +11,20 @@ class Adapter {
     return this.get(`${this.baseUrl}/recipes`);
   }
 
-  createRecipe() {
-    return this.post(`${this.baseUrl}/recipes`);
+  createRecipe(body) {
+    return this.post(`${this.baseUrl}/recipes`, body);
+  }
+
+  updateMade(id, body) {
+    return this.patch(`${this.baseUrl}/recipes/${id}`, body)
   }
 
   updateRecipe(id, body) {
     return this.patch(`${this.baseUrl}/recipes/${id}`, body)
   }
 
-  deleteRecipe(id, body) {
-    return this.delete(`${this.baseUrl}/recipes/${id}`, body)
+  deleteRecipe(id) {
+    return this.delete(`${this.baseUrl}/recipes/${id}`)
   }
 
   get(url) {
@@ -43,11 +47,10 @@ class Adapter {
     }).then(res => res.json());
   }
 
-  delete(url, body) {
+  delete(url) {
     return fetch(url, {
       method: "DELETE",
       headers: this.headers,
-      body: JSON.stringify(body),
-    }).then(res => res.json())
+    }).then(res => res.json());
   }
 }

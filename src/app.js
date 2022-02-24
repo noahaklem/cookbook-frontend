@@ -4,6 +4,7 @@ class App {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
 
     this.createRecipes = this.createRecipes.bind(this);
     this.addRecipes = this.addRecipes.bind(this);
@@ -13,6 +14,8 @@ class App {
     document.querySelector("#recipes-container").addEventListener("click", this.handleClick);
 
     document.querySelector("#recipes-container").addEventListener("submit", this.handleSubmit);
+
+    document.querySelector("#new-recipe").addEventListener("submit", this.handleCreate);
   }
 
   createRecipes(recipes) {
@@ -32,17 +35,27 @@ class App {
 
   delete(id) {
     const recipe = Recipe.findById(id);
-    debugger
-
+    this.adapter.deleteRecipe(recipe.id).then(recipes => {
+      Recipe.all.splice(0, Recipe.all.length);
+      this.createRecipes(recipes);
+    })
   }
 
   edit(id) {
     const recipe = Recipe.findById(id);
-    recipe.recipeForm(recipe)
+    recipe.recipeForm(recipe);
   }
 
   made(id) {
-    console.log("made")
+    const recipe = Recipe.findById(id);
+    const made = !recipe.made;
+    const body = { made }
+    this.adapter.updateMade(recipe.id, body)
+    .then(updatedMade => {
+      const recipe = Recipe.findById(parseInt(updatedMade.data.id));
+      recipe.update(updatedMade.data.attributes);
+      this.addRecipes();
+    })
   }
 
   handleClick(e) {
@@ -66,6 +79,25 @@ class App {
       recipe.update(updatedRecipe.data.attributes);
       this.addRecipes();
     }) 
+  }
+
+  handleCreate(e) {
+    e.preventDefault();
+    const name = e.target.querySelector("#new-recipe [type=text]").value;
+    const cook_time = e.target.querySelector("#new-recipe [type=number]").value;
+    const made = false;
+    const body = { name, cook_time, made }
+    this.adapter.createRecipe(body)
+    .then(newRecipe => {
+      if (newRecipe.status === 'error') {
+        const error = newRecipe.message;
+        const div = document.querySelector("#error");
+        const message = document.createElement("li");
+        message.innerText = error
+        div.appendChild(message)
+        debugger
+      }
+    })
   }
 }
 

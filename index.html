@@ -16,12 +16,26 @@
 </head>
 <body>
   <!-- 1. when what event happens 2. what do you want to do 3. what do you want to manipulate the DOM  -->
-  <h1>Alrighty!</h1>
-  <header>
-    <div id="message-container">
-
+  <h1>Create a New Recipe!</h1>
+  <div>
+    <ul id="error">
+        
+    </ul>
+  </div>
+  
+  <form id="new-recipe">
+    <div >
+      <label for="name">Recipe Name:</label>
+      <input type="text" name="name">
     </div>
-  </header>
+    <div>
+      <label for="cook_time">Cooking Time:</label>
+      <input type="number" name="cook_time" min=1>
+    </div>
+    <div>
+      <input type="submit">
+    </div>
+  </form>
 
   <div id="recipes-container">
     
