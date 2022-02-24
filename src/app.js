@@ -90,12 +90,14 @@ class App {
     this.adapter.createRecipe(body)
     .then(newRecipe => {
       if (newRecipe.status === 'error') {
-        const error = newRecipe.message;
-        const div = document.querySelector("#error");
-        const message = document.createElement("li");
-        message.innerText = error
-        div.appendChild(message)
-        debugger
+        newRecipe.message.forEach(error => {
+          const div = document.querySelector("#error");
+          const message = document.createElement("li");
+          message.innerText = error
+          div.appendChild(message)
+        })
+      } else {
+        this.createRecipes(newRecipe)
       }
     })
   }
