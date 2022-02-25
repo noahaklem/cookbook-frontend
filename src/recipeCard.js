@@ -9,14 +9,14 @@ class recipeCard {
   renderRecipeCard() {
     return ` 
       <div data-id=${this.id} id="recipe-card">
-        <h3 class="title">${this.name}</h3>
-        <button data-action="delete" id="delete-recipe" data-id=${this.id}">X</button>
-        <p class="sub-title">Cook Time: ${this.cook_time}</p>
+        <h3 class="title">${this.name} <button class="delete" data-action="delete" id="delete-recipe" data-id=${this.id}">X</button></h3>
+        
+        <p class="title">Cook Time: ${this.cook_time}</p>
         <button data-action="edit" class="button" data-id=${this.id}>Edit Recipe</button>
         <button data-action="made" class="made" data-id=${this.id}>${this.made}</button>
-        <h4>Ingredients:</h4>
-        <div data-id=${this.id} id="ingredients-container">
         
+        <div data-id=${this.id} id="ingredients-container">
+        <h4 class="title">Ingredients:</h4>
         </div>
       </div>
     `;

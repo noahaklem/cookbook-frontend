@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheet.css">
   <script type="text/javascript" src="src/index.js" ></script>
   <script type="text/javascript" src="src/app.js" ></script>
   <script type="text/javascript" src="src/adapter.js" ></script>
@@ -15,29 +16,31 @@
   <title>Cook Book</title>
 </head>
 <body>
+  <h1>Welcome to Cook Book!</h1>
   <!-- 1. when what event happens 2. what do you want to do 3. what do you want to manipulate the DOM  -->
-  <h1>Create a New Recipe!</h1>
-  <div>
-    <ul id="error">
-        
-    </ul>
+  <div id="recipe-card">
+    <h3 class="title">Create a New Recipe!</h3>
+    <div id="error-container">
+      <ul id="error">
+            
+      </ul>
+      <form id="new-recipe">
+        <label class="title" for="name">Recipe Name:</label>
+        <div class="input">
+          <input type="text" name="name">
+        </div>
+        <label class="title" for="cook_time">Cooking Time:</label>
+        <div class="input">
+          <input type="number" name="cook_time" min=1>
+        </div>
+        <div class="button">
+          <button type="submit">Create!</button>
+        </div>
+      </form>
+    </div>
   </div>
-  
-  <form id="new-recipe">
-    <div >
-      <label for="name">Recipe Name:</label>
-      <input type="text" name="name">
-    </div>
-    <div>
-      <label for="cook_time">Cooking Time:</label>
-      <input type="number" name="cook_time" min=1>
-    </div>
-    <div>
-      <input type="submit">
-    </div>
-  </form>
-
   <div id="recipes-container">
+   
     
   </div>
 </body>

@@ -97,6 +97,7 @@ class App {
           div.appendChild(message)
         })
       } else {
+        Recipe.all.splice(0, Recipe.all.length);
         this.createRecipes(newRecipe)
       }
     })
