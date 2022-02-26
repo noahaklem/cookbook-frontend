@@ -7,5 +7,5 @@ The cookbook-frontend requires that you download the repo https://github.com/noa
 After download/install and terminal started:
 1. Fork and clone this repo to your local computer.
 2. Navigate to the repo folder where the project was saved.
-3. You can run open index.html to view and use the cookbook app.
+3. Open your terminal and run open index.html to view and use the cookbook-frontend app.
 
